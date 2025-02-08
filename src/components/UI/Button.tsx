@@ -1,19 +1,23 @@
-interface ButtonProps {
-    text: string;
+import React from "react";
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+    text?: string;
     type?: "button" | "submit" | "reset";
     classname?: string;
     onClick: () => void;
+    children?: React.ReactNode
 }
 
-function Button({ text, type = "button", classname, onClick }: ButtonProps) {
+function Button({ text, type = "button", classname, onClick, children, ...props }: ButtonProps) {
 
     return (
         <button
-            className={`bg-slate-950 text-white px-6 py-2.5 rounded-md hover:bg-zinc-700 transition-colors ${classname}`}
+            className={`${classname} bg-slate-950 shadow-md text-white px-6 py-2.5 rounded-md hover:bg-zinc-700 transition-colors`}
             type={type}
             onClick={onClick}
+            {...props}
         >
-            {text}
+            {text ?? children}
         </button>
     )
 }
