@@ -5,7 +5,7 @@ import Select from "../UI/Select";
 function SearchForm() {
 
     return (
-        <form className="flex flex-col gap-3 my-2 p-3 pt-4 border border-gray-950 rounded-sm w-full max-w-4xl">
+        <form className="flex flex-col gap-3 my-2 p-3 pt-4 rounded-md shadow-lg w-full max-w-4xl">
             <Input label="Name" placeholder="Take the dog out..." id="name" name="name" />
 
             <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center">
