@@ -1,3 +1,4 @@
+import Metrics from "./components/metrics/Metrics";
 import SearchForm from "./components/search-controls/SearchForm";
 import TodosTable from "./components/todos-table/TodosTable";
 import Button from "./components/UI/Button";
@@ -11,6 +12,7 @@ function App() {
 				<Button text="+ New To Do" classname="justify-self-start" onClick={() => { }} />
 			</div>
 			<TodosTable />
+			<Metrics />
 			{/* //todo: add the todo's table here */}
 		</main>
 	)
