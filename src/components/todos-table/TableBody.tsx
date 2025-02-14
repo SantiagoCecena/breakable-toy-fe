@@ -1,3 +1,4 @@
+import { Todo } from "../../types/types"
 import TableItem from "./TableItem"
 
 const TODOS = [
@@ -13,7 +14,7 @@ const TODOS = [
     {
         id: 2,
         text: "Buy groceries",
-        due_date: "2021-09-01",
+        due_date: null,
         done: false,
         done_date: null,
         priority: "high",
@@ -31,7 +32,7 @@ const TODOS = [
     {
         id: 4,
         text: "Buy groceries",
-        due_date: "2021-09-01",
+        due_date: null,
         done: false,
         done_date: null,
         priority: "high",
@@ -75,11 +76,11 @@ const TODOS = [
     },
 ]
 
-function TableBody() {
+function TableBody({ todos }: { todos: Todo[] }) {
 
     return (
         <tbody className="bg-white border-b border-gray-200">
-            {TODOS.map(todo => (
+            {todos.map(todo => (
                 <TableItem todo={todo} key={todo.id} />
             ))}
         </tbody>
