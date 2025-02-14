@@ -7,10 +7,11 @@ const api = axios.create({
 })
 
 
-export const getTodos = async (filters: Filters): Promise<Todo[]> => {
+export const getTodos = async (filters: Filters, page: number): Promise<Todo[]> => {
     try {
         const { data } = await api.get<Todo[]>("", {
             params: {
+                page: page - 1,
                 name: filters.name ? filters.name : undefined,
                 priority: filters.priority !== "all" ? filters.priority.toUpperCase() : undefined,
                 done: filters.state !== "all" ? filters.state : undefined
