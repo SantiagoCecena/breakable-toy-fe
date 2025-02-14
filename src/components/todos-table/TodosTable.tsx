@@ -13,8 +13,8 @@ function TodosTable({ filters }: { filters: Filters }) {
     const [page, setPage] = useState<number>(1);
 
     const { data, isError, isLoading } = useQuery({
-        queryKey: ['todos', filters],
-        queryFn: () => getTodos(filters)
+        queryKey: ['todos', filters, page],
+        queryFn: () => getTodos(filters, page)
     });
 
     if (isLoading) return <div>Loading...</div>;
