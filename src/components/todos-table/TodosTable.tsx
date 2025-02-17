@@ -6,10 +6,14 @@ import TableBody from "./TableBody"
 import TableHead from "./TableHead"
 import { getTodos } from "../../services/api"
 import { Filters } from "../../types/types"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import SpinLoader from "../UI/loaders/SpinLoader"
+import { useTodosStore } from "../../store/useTodosStore"
 
 function TodosTable({ filters }: { filters: Filters }) {
 
+    const todos = useTodosStore(state => state.todos);
+    const setTodos = useTodosStore(state => state.setTodos);
     const [page, setPage] = useState<number>(1);
 
     const { data, isError, isLoading } = useQuery({
@@ -17,9 +21,14 @@ function TodosTable({ filters }: { filters: Filters }) {
         queryFn: () => getTodos(filters, page)
     });
 
-    if (isLoading) return <div>Loading...</div>;
+    useEffect(() => {
+        if (data && data.length > 0) {
+            setTodos(data)
+        }
+    }, [data, setTodos, filters]);
 
-    if (isError) return <div>Ups, something went wrong...</div>;
+    if (isLoading) return <SpinLoader />;
+    if (isError) return <div className="mt-8">Ups, something went wrong...</div>;
     if (data === undefined || data.length === 0) return <div>It seems like no data are available</div>;
 
     return (
@@ -28,7 +37,7 @@ function TodosTable({ filters }: { filters: Filters }) {
 
                 <table className="w-full text-left table-auto min-w-max">
                     <TableHead />
-                    <TableBody todos={data} />
+                    <TableBody todos={todos ?? []} />
                 </table>
             </div>
 
@@ -37,9 +46,9 @@ function TodosTable({ filters }: { filters: Filters }) {
                     <ArrowLeft />
                 </Button>
 
-                <Button onClick={() => { if (page > 1) setPage(1); }} text={String(page)} classname="font-semibold text-base hover:bg-slate-100 px-3 py-2" />
+                <Button onClick={() => { if (page > 1) setPage(1); }} text={String(page)} classname="font-semibold text-base px-3 py-2" />
 
-                <Button onClick={() => setPage(prev => prev + 1)} classname="px-2.5 py-1.5">
+                <Button onClick={() => setPage(prev => prev + 1)} classname="px-2.5 py-1.5 disabled:bg-slate-800" disabled={data!.length < 10}>
                     <ArrowRight />
                 </Button>
             </div>
@@ -47,4 +56,4 @@ function TodosTable({ filters }: { filters: Filters }) {
     )
 }
 
-export default TodosTable
+export default TodosTable;
