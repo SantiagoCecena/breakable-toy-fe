@@ -7,11 +7,11 @@ export interface Filters {
 }
 
 export type Todo = {
-    id: `${string}-${string}-${string}-${string}-${string}`,
+    id: string,
     text: string,
-    priority: "high" | "medium" | "low",
+    priority: "high" | "medium" | "low" | "HIGH" | "MEDIUM" | "LOW",
     done: boolean,
-    dueDate?: string,
-    doneDate?: string,
+    dueDate?: string | null,
+    doneDate?: string | null,
     createdAt: string
 }
