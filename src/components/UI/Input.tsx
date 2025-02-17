@@ -1,5 +1,6 @@
+import React from "react";
 
-interface InputProps {
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     label: string;
     type?: string;
     classname?: string;
@@ -8,7 +9,7 @@ interface InputProps {
     id?: string;
 }
 
-function Input({ label, type = "text", classname, placeholder, name, id }: InputProps) {
+function Input({ label, type = "text", classname, placeholder, name, id, ...props }: InputProps) {
 
     return (
         <div className="flex gap-x-2 items-center">
@@ -19,6 +20,8 @@ function Input({ label, type = "text", classname, placeholder, name, id }: Input
                 placeholder={placeholder}
                 name={name}
                 id={id}
+                autoComplete="off"
+                {...props}
             />
         </div>
     );
