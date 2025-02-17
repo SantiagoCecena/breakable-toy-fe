@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import Metrics from "./components/metrics/Metrics";
 import SearchForm from "./components/search-controls/SearchForm";
-import TodosTable from "./components/todos-table/TodosTable";
+const TodosTable = lazy(() => import("./components/todos-table/TodosTable"));
 import Button from "./components/UI/Button";
 import { Filters } from "./types/types";
 import AddTodoDialog from "./components/UI/AddTodoDialog";
+import EditTodoDialog from "./components/UI/EditTodoDialog";
+import DeleteTodoDialog from "./components/UI/DeleteTodoDialog";
+import SpinLoader from "./components/UI/loaders/SpinLoader";
 
 function App() {
 
@@ -22,9 +25,12 @@ function App() {
 				<Button text="+ New To Do" classname="justify-self-start" onClick={() => setIsDialogOpen(true)} />
 			</div>
 			<AddTodoDialog isOpen={isDialogOpen} setClose={setIsDialogOpen} />
-			<TodosTable filters={filters} />
+			<EditTodoDialog />
+			<DeleteTodoDialog />
+			<Suspense fallback={<SpinLoader />}>
+				<TodosTable filters={filters} />
+			</Suspense>
 			<Metrics />
-			{/* //todo: add the todo's table here */}
 		</main>
 	)
 }
