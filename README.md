@@ -6,12 +6,18 @@ This is the frontend for a To-Do app built with **React**, **TypeScript**, **Tai
 
 
 ## 🚀 Features
-✅ Search todos by name (or part of the name)
-✅ Add new task
-✅ Mark tasks as done/undone
-✅ Edit existing task
-✅ Delete tasks
-✅ Responsive design with Tailwind CSS
+✅ Search todos by name (or part of the name)  
+
+✅ Add new task  
+
+✅ Mark tasks as done/undone  
+
+✅ Edit existing task  
+
+✅ Delete tasks  
+
+✅ Responsive design with Tailwind CSS  
+
 ✅ Metrics area
 
 ## 📦 Used Technologies
