@@ -2,6 +2,9 @@
 
 This is the frontend for a To-Do app built with **React**, **TypeScript**, **Tailwind**, and **Zustand**. It allows users to add, edit, mark tasks as done/undone, and delete them easily.
 
+<img width="902" alt="imagen" src="https://github.com/user-attachments/assets/384b9345-6c2d-413a-8836-db46f768081e" />
+
+
 ## 🚀 Features
 ✅ Search todos by name (or part of the name)
 ✅ Add new task
