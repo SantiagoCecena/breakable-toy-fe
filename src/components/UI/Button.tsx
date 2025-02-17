@@ -1,4 +1,5 @@
 import React from "react";
+import { twMerge } from "tailwind-merge";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     text?: string;
@@ -12,7 +13,7 @@ function Button({ text, type = "button", classname, onClick, children, ...props 
 
     return (
         <button
-            className={`${classname} bg-slate-950 shadow-md text-white px-6 py-2.5 rounded-md hover:bg-zinc-700 transition-colors`}
+            className={twMerge("bg-slate-950 shadow-md text-white px-6 py-2.5 rounded-md hover:bg-zinc-700 transition-colors", classname)}
             type={type}
             onClick={onClick}
             {...props}
