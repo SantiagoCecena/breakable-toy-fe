@@ -44,7 +44,7 @@ export const addTodo = async (todo: Partial<Todo>): Promise<Todo> => {
 
 export const editTodo = async (todoId: string, todo: Partial<Todo>): Promise<Todo> => {
     if (todo.text?.trim() === "") throw new Error("Text is required");
-    if (todo.priority && !["low", "medium", "high"].includes(todo.priority)) throw new Error("Invalid priority");
+    if (todo.priority && !["low", "medium", "high"].includes(todo.priority.trim().toLowerCase())) throw new Error("Invalid priority");
     if (todo.dueDate && isNaN(Date.parse(todo.dueDate))) throw new Error("Invalid due date");
     try {
         const { data } = await api.put<Todo>(`/${todoId}`, {
