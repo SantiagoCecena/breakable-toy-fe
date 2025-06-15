@@ -42,13 +42,13 @@ function TodosTable({ filters }: { filters: Filters }) {
             </div>
 
             <div className="shadow-bottom rounded-bl-md rounded-br-md w-full max-w-4xl p-3.5 flex justify-center md:justify-end gap-x-3">
-                <Button onClick={() => setPage(prev => prev == 1 ? 1 : prev - 1)} classname="px-2.5 py-1.5 disabled:bg-slate-800" disabled={page == 1}>
+                <Button data-testid="button" onClick={() => setPage(prev => prev == 1 ? 1 : prev - 1)} classname="px-2.5 py-1.5 disabled:bg-slate-800" disabled={page == 1}>
                     <ArrowLeft />
                 </Button>
 
                 <Button onClick={() => { if (page > 1) setPage(1); }} text={String(page)} classname="font-semibold text-base px-3 py-2" />
 
-                <Button onClick={() => setPage(prev => prev + 1)} classname="px-2.5 py-1.5 disabled:bg-slate-800" disabled={data!.length < 10}>
+                <Button data-testid="button" onClick={() => setPage(prev => prev + 1)} classname="px-2.5 py-1.5 disabled:bg-slate-800" disabled={data!.length < 10}>
                     <ArrowRight />
                 </Button>
             </div>
