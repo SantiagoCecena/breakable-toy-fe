@@ -13,7 +13,7 @@ function Metrics() {
     if (isLoading) return <SpinLoader />
 
     return (
-        <section className="flex flex-col gap-y-5 sm:flex-row justify-around my-16 w-full max-w-4xl shadow-lg p-6 rounded-md">
+        <section data-testid="metrics-section" className="flex flex-col gap-y-5 sm:flex-row justify-around my-16 w-full max-w-4xl shadow-lg p-6 rounded-md">
             <article className="text-center flex flex-col">
                 <h3 className="font-semibold">Average time to finish tasks:</h3>
                 <p className="flex-grow flex items-center justify-center">

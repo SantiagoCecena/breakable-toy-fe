@@ -55,7 +55,7 @@ function TableItem({ todo }: { todo: Todo }) {
 
     return (
         <tr className={`${rowColor} border-b border-gray-200 ${done && "line-through"}`} key={todo.id}>
-            <td className="px-6 py-3 text-center hover:cursor-pointer" onClick={handleMarkTodo}>
+            <td className="px-6 py-3 text-center hover:cursor-pointer" onClick={handleMarkTodo} data-testid="checkbox">
                 {done ? <CheckboxChecked /> : <CheckboxUnchecked />}
             </td>
             <td className="px-6 py-3 text-center max-w-60">{todo.text}</td>
